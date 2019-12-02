@@ -16,7 +16,7 @@ protocol StateSubview {
 }
 
 //MARK: Enum
-enum ViewState {
+enum ViewSelect {
     case loading
     case start
     case empty
@@ -40,7 +40,7 @@ class StateView: UIView {
         return [loadingView, emptyView, startView, errorView]
     }
     
-    var state: ViewState = .none {
+    var state: ViewSelect = .none {
         didSet {
             updateState(state)
         }
@@ -52,7 +52,7 @@ class StateView: UIView {
         self.setupViews()
     }
     
-    func updateState(_ state: ViewState) {
+    func updateState(_ state: ViewSelect) {
         allViews.forEach { $0.hide() }
         switch state {
         case .loading:

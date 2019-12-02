@@ -13,7 +13,7 @@ import UIKit
 
 extension Reactive where Base: StateView {
     
-    var state: Binder<ViewState> {
+    var state: Binder<ViewSelect> {
         return Binder(self.base) { stateView, state in
             stateView.state = state
         }

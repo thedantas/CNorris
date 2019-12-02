@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct NetworkingConstants {
+struct BaseURLConstants {
     
     private init() {}
     

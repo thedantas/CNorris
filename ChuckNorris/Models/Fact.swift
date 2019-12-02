@@ -11,12 +11,14 @@ import Foundation
 struct Fact: Decodable {
     //MARK: Variables
     let category: [String]
+    let iconUrl: String
     let id: String
     let value: String
     
     //MARK: Enum
     enum CodingKeys: String, CodingKey {
         case category
+        case iconUrl = "icon_url"
         case id
         case value
     }
@@ -24,8 +26,10 @@ struct Fact: Decodable {
     //MARK: Init
     init(category: [String] = [],
          id: String = "",
-         value: String = "") {
+         value: String = "",
+         iconUrl: String = "") {
         self.category = category
+        self.iconUrl = iconUrl
         self.id = id
         self.value = value
     }
@@ -38,7 +42,7 @@ struct Fact: Decodable {
         } else {
             self.category = ["unknown"]
         }
-        
+        self.iconUrl = try container.decode(String.self, forKey: .iconUrl)
         self.id = try container.decode(String.self, forKey: .id)
         self.value = try container.decode(String.self, forKey: .value)
         

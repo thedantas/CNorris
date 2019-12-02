@@ -20,7 +20,7 @@ class MainViewModel {
     let isFactsShown: Driver<Bool>
     let searchQuery: Observable<String>
     
-    let viewState: Driver<ViewState>
+    let viewState: Driver<ViewSelect>
     let isViewStateHidden: Driver<Bool>
     let isLoading: Driver<Bool>
     
@@ -108,27 +108,27 @@ class MainViewModel {
     ///   - error: Error thrown on api call
     ///   - isLoading: Wheater is loading or not
     /// - Returns: Observable already mapped to view state
-    class func viewState(results: Driver<[Fact]>, error: Driver<Error>, isLoading: Driver<Bool>) -> Driver<ViewState> {
+    class func viewState(results: Driver<[Fact]>, error: Driver<Error>, isLoading: Driver<Bool>) -> Driver<ViewSelect> {
         //view states
         let isEmpty = results
             .filter { $0.isEmpty }
             .skip(1) //to avoid catching the "startWith"
-            .map { _ in return ViewState.empty }
+            .map { _ in return ViewSelect.empty }
         
         let error = error
-            .withLatestFrom(results) { error, results -> ViewState in
-                    return ViewState.error(error)
+            .withLatestFrom(results) { error, results -> ViewSelect in
+                    return ViewSelect.error(error)
         }
         
         let loading = isLoading
             .filter { $0 == true }
-            .map { _ in return ViewState.loading }
+            .map { _ in return ViewSelect.loading }
         
         return Driver.merge(isEmpty,
                                  error,
                                  loading)
             .startWith(.start)
-            .asDriver(onErrorJustReturn: ViewState.error(NorrisError()))
+            .asDriver(onErrorJustReturn: ViewSelect.error(NorrisError()))
 
     }
 }

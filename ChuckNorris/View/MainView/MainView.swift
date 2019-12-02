@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import Swinject
+
 
 
 class MainView: UIViewController {
@@ -65,7 +65,7 @@ extension MainView {
     }
     
     func configureViews() {
-        self.tableView.contentInset.top = self.headerView.maxHeight - 20
+        self.tableView.contentInset.top = 140
         self.tableView.register(cellType: NorrisFactCell.self)
         self.tableView.backgroundColor = .clear
         self.tableView.estimatedRowHeight = 200
@@ -157,7 +157,7 @@ extension MainView {
     }
 }
 
-extension MainView: FactCellDelegate {
+extension MainView: NorrisFactCellDelegate {
     func share(image: UIImage?) {
         let imageShare = [ image! ]
         let activityViewController = UIActivityViewController(activityItems: imageShare, applicationActivities: nil)

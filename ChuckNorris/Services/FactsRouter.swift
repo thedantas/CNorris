@@ -19,7 +19,7 @@ extension FactsRouter: TargetType {
     
     //MARK: Variables
     var baseURL: URL {
-        return URL(string: NetworkingConstants.baseURL)!
+        return URL(string: BaseURLConstants.baseURL)!
     }
     
     var path: String {

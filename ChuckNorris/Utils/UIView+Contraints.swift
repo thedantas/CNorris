@@ -110,7 +110,6 @@ extension UIView {
         return constraint
     }
     
-    //pin to safe area on bottom of screen
     @discardableResult
     func pinSafeBottom(_ offset: CGFloat = 0.0) -> NSLayoutConstraint? {
         guard let superview = self.superview else {
@@ -121,7 +120,6 @@ extension UIView {
         return constraint
     }
     
-    //pin to safe area on top of screen
     @discardableResult
     func pinSafeTop(_ offset: CGFloat = 0.0) -> NSLayoutConstraint? {
         guard let superview = self.superview else {

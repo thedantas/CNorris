@@ -59,7 +59,7 @@ extension SearchView {
     
     func setupBindings() {
         self.viewModel.categories
-            .drive(self.categoriesCloudView.rx.items)
+            .drive(self.categoriesCloudView.rx.facts)
             .disposed(by: rx.disposeBag)
         
         self.categorySelected = self.categoriesCloudView.rx.tagSelected
@@ -67,7 +67,7 @@ extension SearchView {
         self.recentSearchSelected = self.pastSearchCloudView.rx.tagSelected
         
         self.viewModel.recentSearch
-            .drive(self.pastSearchCloudView.rx.items)
+            .drive(self.pastSearchCloudView.rx.facts)
             .disposed(by: rx.disposeBag)
         
         self.viewModel.isLoading

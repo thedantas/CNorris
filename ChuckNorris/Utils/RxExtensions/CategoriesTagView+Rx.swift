@@ -12,9 +12,9 @@ import RxCocoa
 
 extension Reactive where Base: CategoriesTagView {
     
-    var items: Binder<[String]> {
-        return Binder(self.base) { tagView, items in
-            tagView.items = items
+    var facts: Binder<[String]> {
+        return Binder(self.base) { categoriesView, fact in
+            categoriesView.items = fact
         }
     }
     

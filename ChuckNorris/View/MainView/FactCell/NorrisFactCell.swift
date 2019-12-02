@@ -10,7 +10,7 @@ import Foundation
 import Reusable
 
 //MARK: Protocol
-protocol FactCellDelegate: class {
+protocol NorrisFactCellDelegate: class {
     func share(image: UIImage?)
 }
 
@@ -23,7 +23,7 @@ class NorrisFactCell: UITableViewCell, NibReusable {
     @IBOutlet weak var categoriesCloudView: CategoriesTagView!
     
     //MARK: Variables
-    weak var delegate: FactCellDelegate?
+    weak var delegate: NorrisFactCellDelegate?
     var viewModel = FactItemViewModel()
     
     //MARK: Functions
@@ -54,13 +54,21 @@ class NorrisFactCell: UITableViewCell, NibReusable {
             .disposed(by: rx.disposeBag)
         
         self.shareButton.rx.tap.bind { [weak self] in
-            let image = self?.imageView?.image
+            let image = self?.asImage()
             self?.delegate?.share(image: image)
         }.disposed(by: rx.disposeBag)
         
         self.viewModel.categories
-            .drive(categoriesCloudView.rx.items)
+            .drive(categoriesCloudView.rx.facts)
             .disposed(by: rx.disposeBag)
         
+    }
+}
+extension UIView {
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
     }
 }
