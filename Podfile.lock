@@ -1,0 +1,95 @@
+PODS:
+  - Alamofire (4.8.1)
+  - lottie-ios (2.5.2)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - Moya/RxSwift (12.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - R.swift (5.0.2):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.0)
+  - ReachabilitySwift (4.3.0)
+  - Result (4.1.0)
+  - Reusable (4.0.5):
+    - Reusable/Storyboard (= 4.0.5)
+    - Reusable/View (= 4.0.5)
+  - Reusable/Storyboard (4.0.5)
+  - Reusable/View (4.0.5)
+  - RxAtomic (4.4.1)
+  - RxCocoa (4.4.1):
+    - RxSwift (~> 4.0)
+  - RxGesture (2.1.0):
+    - RxCocoa (~> 4.4.0)
+    - RxSwift (~> 4.4.0)
+  - RxSwift (4.4.1):
+    - RxAtomic (~> 4.4)
+  - RxSwiftExt (3.4.0):
+    - RxSwiftExt/Core (= 3.4.0)
+    - RxSwiftExt/RxCocoa (= 3.4.0)
+  - RxSwiftExt/Core (3.4.0):
+    - RxSwift (~> 4.0)
+  - RxSwiftExt/RxCocoa (3.4.0):
+    - RxCocoa (~> 4.0)
+    - RxSwiftExt/Core
+  - RxSwiftUtilities (2.0.1):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - SwiftLint (0.31.0)
+  - Swinject (2.0.0)
+
+DEPENDENCIES:
+  - lottie-ios
+  - Moya/RxSwift
+  - R.swift
+  - ReachabilitySwift
+  - Reusable
+  - RxCocoa
+  - RxGesture
+  - RxSwift
+  - RxSwiftExt
+  - RxSwiftUtilities (~> 2.0.1)
+  - SwiftLint
+  - Swinject (~> 2.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - lottie-ios
+    - Moya
+    - R.swift
+    - R.swift.Library
+    - ReachabilitySwift
+    - Result
+    - Reusable
+    - RxAtomic
+    - RxCocoa
+    - RxGesture
+    - RxSwift
+    - RxSwiftExt
+    - RxSwiftUtilities
+    - SwiftLint
+    - Swinject
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
+  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
+  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
+  RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
+  RxGesture: 7f6dfb45dbde06e618c24442d38493e3144f2c95
+  RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
+  RxSwiftExt: 01f8ecbeeb355698e9c75365ebe908b00dacf45d
+  RxSwiftUtilities: 0edb01ef16c527c10fb352485b62cbd951e4a04d
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  Swinject: 2e964a80d70ab09b3949c99032711f89147bfd60
+
+PODFILE CHECKSUM: 3f72dc656a2d50fbfe0114ab125a25388c0db2a5
+
+COCOAPODS: 1.7.2

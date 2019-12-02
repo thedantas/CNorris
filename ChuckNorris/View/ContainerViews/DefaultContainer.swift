@@ -1,0 +1,88 @@
+//
+//  DefaultContainer.swift
+//  ChuckNorris
+//
+//  Created by André  Costa Dantas on 01/12/19.
+//  Copyright © 2019 André  Costa Dantas. All rights reserved.
+//
+
+import Foundation
+import Swinject
+import Moya
+
+final class DefaultContainer {
+    
+    let container: Container
+    
+    init() {
+        self.container = Container()
+        self.registerServices()
+        self.registerViews()
+        self.registerStorage()
+    }
+    
+}
+
+//Register Views
+extension DefaultContainer {
+    
+    func registerViews() {
+        
+        self.container.register(SearchView.self) { resolver in
+            SearchView(norrisRepository: resolver.resolve(NorrisStorage.self)!,
+                       localStorage: resolver.resolve(UserDefaultsDataStorage.self)!)
+        }
+        
+        self.container.register(MainView.self) { resolver in
+            MainView(searchView: resolver.resolve(SearchView.self)!,
+                repository: resolver.resolve(NorrisStorage.self)!,
+                localStorage: resolver.resolve(UserDefaultsDataStorage.self)!)
+        }
+        
+        self.container.register(SplashViewController.self) { _ in
+            SplashViewController()
+        }
+        
+    }
+    
+}
+
+//Register Services
+extension DefaultContainer {
+    
+    func registerServices() {
+        self.container.register(NorrisService.self) { _ in
+            let provider = MoyaProvider<FactsRouter>(plugins: self.getDefaultPlugins())
+            return NorrisServiceRouterProvider(provider: provider)
+        }
+        
+        self.container.register(NorrisStorage.self) { resolver in
+            NorrisStorageImpl(
+                service: resolver.resolve(NorrisService.self)!
+            )
+        }
+    }
+    
+    func getDefaultPlugins() -> [PluginType] {
+        #if DEBUG
+            return [NetworkLoggerPlugin(verbose: true)]
+        #else
+            return []
+        #endif
+    }
+    
+}
+
+//Register Storage
+extension DefaultContainer {
+    
+    func registerStorage() {
+        
+        self.container.register(UserDefaultsDataStorage.self) { _ in
+            return UserDefaultsDataStorageImpl()
+        }
+        
+    }
+    
+}
+

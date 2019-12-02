@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchView" customModule="ChuckNorris" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="Wr8-bM-kub" id="llu-DJ-TEs"/>
+                <outlet property="categoriesCloudView" destination="n9W-bZ-bsg" id="1oO-Wx-lon"/>
+                <outlet property="recentSearchCloudView" destination="pjA-0N-0GB" id="niU-TN-QfO"/>
+                <outlet property="view" destination="cLD-ig-OAJ" id="ijn-os-XnL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="cLD-ig-OAJ">
+            <rect key="frame" x="0.0" y="0.0" width="388" height="474"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNc-mn-wHw">
+                    <rect key="frame" x="20" y="24" width="105" height="23"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9W-bZ-bsg" customClass="CategoriesTagView" customModule="ChuckNorris" customModuleProvider="target">
+                    <rect key="frame" x="20" y="55" width="348" height="180"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="PSQ-bY-fyx"/>
+                    </constraints>
+                </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Wr8-bM-kub">
+                    <rect key="frame" x="184" y="135" width="20" height="20"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past Searches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHZ-5Z-av5">
+                    <rect key="frame" x="20" y="253" width="119.5" height="23"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjA-0N-0GB" customClass="CategoriesTagView" customModule="ChuckNorris" customModuleProvider="target">
+                    <rect key="frame" x="20" y="284" width="348" height="170"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="pjA-0N-0GB" firstAttribute="leading" secondItem="DHZ-5Z-av5" secondAttribute="leading" id="4eu-df-MIw"/>
+                <constraint firstItem="pjA-0N-0GB" firstAttribute="top" secondItem="DHZ-5Z-av5" secondAttribute="bottom" constant="8" id="F55-2v-yP6"/>
+                <constraint firstItem="DHZ-5Z-av5" firstAttribute="top" secondItem="n9W-bZ-bsg" secondAttribute="bottom" constant="18" id="JAM-um-pof"/>
+                <constraint firstItem="Wr8-bM-kub" firstAttribute="centerY" secondItem="n9W-bZ-bsg" secondAttribute="centerY" id="OWp-Om-8v7"/>
+                <constraint firstItem="Wr8-bM-kub" firstAttribute="centerX" secondItem="n9W-bZ-bsg" secondAttribute="centerX" id="PX1-Lb-kWS"/>
+                <constraint firstItem="gNc-mn-wHw" firstAttribute="leading" secondItem="cLD-ig-OAJ" secondAttribute="leading" constant="20" id="Qp8-zx-aaQ"/>
+                <constraint firstItem="DHZ-5Z-av5" firstAttribute="leading" secondItem="n9W-bZ-bsg" secondAttribute="leading" id="SxL-EI-yhu"/>
+                <constraint firstItem="gNc-mn-wHw" firstAttribute="top" secondItem="cLD-ig-OAJ" secondAttribute="top" constant="24" id="bx1-2t-veX"/>
+                <constraint firstItem="n9W-bZ-bsg" firstAttribute="leading" secondItem="cLD-ig-OAJ" secondAttribute="leading" constant="20" id="dql-9H-wWh"/>
+                <constraint firstItem="n9W-bZ-bsg" firstAttribute="top" secondItem="gNc-mn-wHw" secondAttribute="bottom" constant="8" id="fDH-tt-ACO"/>
+                <constraint firstAttribute="trailing" secondItem="n9W-bZ-bsg" secondAttribute="trailing" constant="20" id="jaZ-PR-ux1"/>
+                <constraint firstAttribute="bottom" secondItem="pjA-0N-0GB" secondAttribute="bottom" constant="20" id="pXO-gJ-5Ww"/>
+                <constraint firstItem="pjA-0N-0GB" firstAttribute="trailing" secondItem="n9W-bZ-bsg" secondAttribute="trailing" id="wbW-Xf-jOX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="2al-X8-Lnx"/>
+            <point key="canvasLocation" x="128.98550724637681" y="-334.15178571428572"/>
+        </view>
+    </objects>
+</document>

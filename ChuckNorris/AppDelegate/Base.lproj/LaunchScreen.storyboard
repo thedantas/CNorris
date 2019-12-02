@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vWZ-Cw-dMP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="W9k-YY-jNF">
+            <objects>
+                <viewController id="vWZ-Cw-dMP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HBo-ii-yv4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_1" translatesAutoresizingMaskIntoConstraints="NO" id="tw5-d8-EO4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2YW-9l-qfS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7Zh-rj-ffG">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="cX0-wf-9lp">
+                                            <rect key="frame" x="40" y="415" width="334" height="32"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cX0-wf-9lp" firstAttribute="centerY" secondItem="7Zh-rj-ffG" secondAttribute="centerY" id="3E5-ja-o8Q"/>
+                                        <constraint firstItem="cX0-wf-9lp" firstAttribute="leading" secondItem="7Zh-rj-ffG" secondAttribute="leading" constant="40" id="5z9-I4-9VF"/>
+                                        <constraint firstAttribute="trailing" secondItem="cX0-wf-9lp" secondAttribute="trailing" constant="40" id="eI2-Ph-cS8"/>
+                                        <constraint firstItem="cX0-wf-9lp" firstAttribute="centerX" secondItem="7Zh-rj-ffG" secondAttribute="centerX" id="er9-VI-853"/>
+                                    </constraints>
+                                </view>
+                                <color key="backgroundColor" red="0.067020126210000003" green="0.13406323580000001" blue="0.2148239213" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tw5-d8-EO4" firstAttribute="trailing" secondItem="XIs-Ys-WYs" secondAttribute="trailing" id="2BU-rk-YBJ"/>
+                            <constraint firstItem="tw5-d8-EO4" firstAttribute="top" secondItem="HBo-ii-yv4" secondAttribute="top" id="K8d-cX-tFt"/>
+                            <constraint firstItem="2YW-9l-qfS" firstAttribute="leading" secondItem="XIs-Ys-WYs" secondAttribute="leading" id="R9W-uq-SL1"/>
+                            <constraint firstItem="tw5-d8-EO4" firstAttribute="bottom" secondItem="XIs-Ys-WYs" secondAttribute="bottom" id="YPS-xQ-WcI"/>
+                            <constraint firstItem="2YW-9l-qfS" firstAttribute="trailing" secondItem="XIs-Ys-WYs" secondAttribute="trailing" id="pln-mR-9Qc"/>
+                            <constraint firstItem="2YW-9l-qfS" firstAttribute="top" secondItem="HBo-ii-yv4" secondAttribute="top" id="qA6-qZ-a5z"/>
+                            <constraint firstItem="tw5-d8-EO4" firstAttribute="leading" secondItem="XIs-Ys-WYs" secondAttribute="leading" id="qJ0-y9-XFj"/>
+                            <constraint firstItem="2YW-9l-qfS" firstAttribute="bottom" secondItem="XIs-Ys-WYs" secondAttribute="bottom" id="zxm-jo-Bsn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XIs-Ys-WYs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3EF-79-xjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="image_1" width="1920" height="1054"/>
+        <image name="logo" width="16" height="16"/>
+    </resources>
+</document>
