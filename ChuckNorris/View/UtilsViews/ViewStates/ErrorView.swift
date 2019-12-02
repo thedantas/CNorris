@@ -12,6 +12,7 @@ import Lottie
 
 class ErrorView: UIView, StateSubview {
     
+    //MARK: Variables
     private var didSetupViews: Bool = false
     
     var errorMessage: String = "Error!" {
@@ -30,6 +31,7 @@ class ErrorView: UIView, StateSubview {
         return label
     }()
     
+    //MARK: Functions
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setupViews()

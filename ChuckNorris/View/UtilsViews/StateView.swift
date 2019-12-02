@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 
+//MARK: Protocol
 protocol StateSubview {
     func show()
     func hide()
 }
 
+//MARK: Enum
 enum ViewState {
     case loading
     case start
@@ -24,12 +26,13 @@ enum ViewState {
 
 class StateView: UIView {
     
+    //MARK: Variables
     let testTitle = UILabel()
     
     private var didSetupViews: Bool = false
     
     let loadingView = LoadingView()
-    let emptyView = EmptyView()
+    let emptyView = NotFindView()
     let startView = StartView()
     let errorView = ErrorView()
     
@@ -43,6 +46,7 @@ class StateView: UIView {
         }
     }
     
+    //MARK: Functions
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setupViews()

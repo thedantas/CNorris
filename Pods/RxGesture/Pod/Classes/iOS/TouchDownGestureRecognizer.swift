@@ -73,7 +73,7 @@ public extension Reactive where Base: View {
      Returns an observable `TouchDownGestureRecognizer` events sequence
      - parameter configuration: A closure that allows to fully configure the gesture recognizer
      */
-    public func touchDownGesture(configuration: TouchDownConfiguration? = nil) -> TouchDownControlEvent {
+    func touchDownGesture(configuration: TouchDownConfiguration? = nil) -> TouchDownControlEvent {
 
         return gesture(make(configuration: configuration))
     }
@@ -84,7 +84,7 @@ public extension ObservableType where E: TouchDownGestureRecognizer {
     /**
      Maps the observable `GestureRecognizer` events sequence to an observable sequence of force values.
      */
-    public func asTouches() -> Observable<Set<UITouch>> {
+    func asTouches() -> Observable<Set<UITouch>> {
         return self.map { $0.touches }
     }
 }

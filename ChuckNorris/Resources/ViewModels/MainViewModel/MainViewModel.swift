@@ -30,7 +30,7 @@ class MainViewModel {
             (search: Driver<String>,
             categorySelected: Driver<String>,
             recentSearchSelected: Driver<String>),
-         norrisRepository: NorrisStorage,
+         norrisStorage: NorrisStorage,
          localStorage: UserDefaultsDataStorage) {
         
         let loadingIndicator = ActivityIndicator()
@@ -55,7 +55,7 @@ class MainViewModel {
                 localStorage.addSearch(search)
             })
             .flatMapLatest { search in
-                norrisRepository.search(search)
+                norrisStorage.search(search)
                     .asObservable()
                     .retryWhenNeeded()
                     .trackActivity(loadingIndicator)

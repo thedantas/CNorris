@@ -29,7 +29,7 @@ public extension ObservableType where E: GestureRecognizer {
      - parameter state: An `GestureRecognizerState` that is used to filter the `GestureRecognizer` events sequence.
      - returns: An observable `GestureRecognizer` events sequence that only contains events emitted while the `GestureRecognizer`'s state match the given `state`.
      */
-    public func when(_ states: GestureRecognizerState...) -> Observable<E> {
+    func when(_ states: GestureRecognizerState...) -> Observable<E> {
         return filter { gesture in
             return states.contains(gesture.state)
         }
@@ -52,7 +52,7 @@ public extension ObservableType where E: GestureRecognizer {
 
      - parameter view: A `TargetView` value on which the gesture took place.
      */
-    public func asLocation(in view: TargetView = .view) -> Observable<Point> {
+    func asLocation(in view: TargetView = .view) -> Observable<Point> {
         return map { gesture in
             return gesture.location(in: view.targetView(for: gesture))
         }

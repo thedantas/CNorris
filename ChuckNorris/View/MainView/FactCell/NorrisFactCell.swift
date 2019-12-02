@@ -1,5 +1,5 @@
 //
-//  FactCell.swift
+//  NorrisFactCell.swift
 //  ChuckNorris
 //
 //  Created by André  Costa Dantas on 01/12/19.
@@ -9,21 +9,24 @@
 import Foundation
 import Reusable
 
+//MARK: Protocol
 protocol FactCellDelegate: class {
     func share(image: UIImage?)
 }
 
-class FactCell: UITableViewCell, NibReusable {
+class NorrisFactCell: UITableViewCell, NibReusable {
     
+    //MARK: Outlets
     @IBOutlet weak var factLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var categoriesCloudView: CategoriesTagView!
     
+    //MARK: Variables
     weak var delegate: FactCellDelegate?
-    
     var viewModel = FactItemViewModel()
     
+    //MARK: Functions
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupBindings()

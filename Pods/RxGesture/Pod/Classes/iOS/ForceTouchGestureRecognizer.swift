@@ -76,7 +76,7 @@ public extension Reactive where Base: View {
      Returns an observable `ForceTouchGestureRecognizer` events sequence
      - parameter configuration: A closure that allows to fully configure the gesture recognizer
      */
-    public func forceTouchGesture(configuration: ForceTouchConfiguration? = nil) -> ForceTouchControlEvent {
+    func forceTouchGesture(configuration: ForceTouchConfiguration? = nil) -> ForceTouchControlEvent {
         return gesture(make(configuration: configuration))
     }
 }
@@ -87,7 +87,7 @@ public extension ObservableType where E: ForceTouchGestureRecognizer {
     /**
      Maps the observable `GestureRecognizer` events sequence to an observable sequence of force values.
      */
-    public func asForce() -> Observable<CGFloat> {
+    func asForce() -> Observable<CGFloat> {
         return self.map { $0.force }
     }
 }

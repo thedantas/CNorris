@@ -12,22 +12,13 @@ import RxSwift
 import RxCocoa
 
 class HeaderView: UIView {
-    
+
+    //MARK: Variables
     let maxHeight: CGFloat = 160
     let minHeight: CGFloat = 72
-    
     var heightConstraint: NSLayoutConstraint!
-    
     var search: Driver<String>!
-    
-    var fractionComplete: CGFloat = 0.0 {
-        didSet {
-           self.animator?.fractionComplete = fractionComplete
-        }
-    }
-    
-    private var animator: UIViewPropertyAnimator?
-    private var expandAnimator: UIViewPropertyAnimator?
+    var fractionComplete: CGFloat = 0.0
     
     override var intrinsicContentSize: CGSize {
         return CGSize(width: 30, height: self.maxHeight)
@@ -54,7 +45,7 @@ class HeaderView: UIView {
     let searchButton: UIButton = {
         let button = UIButton()
         button.setTitle("", for: .normal)
-        button.setImage(#imageLiteral(resourceName: "search (1)"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "search"), for: .normal)
         button.accessibilityIdentifier = "search_button"
         return button
     }()
@@ -71,7 +62,7 @@ class HeaderView: UIView {
         return view
     }()
     
-    
+    //MARK: Function
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupViews()
@@ -81,13 +72,11 @@ class HeaderView: UIView {
         super.prepareForInterfaceBuilder()
         self.setupViews()
     }
-    
+    //MARK: Setups
     private func setupViews() {
         self.backgroundColor = .clear
         self.setupConstraints()
-        
         self.searchTextField.placeholder = "Research a fact"
-        self.setupAnimator()
         self.setupBindings()
     }
     
@@ -104,37 +93,6 @@ class HeaderView: UIView {
             .withLatestFrom(self.searchTextField.rx.text.asObservable())
             .unwrap()
             .asDriver(onErrorJustReturn: "")
-    }
-    
-    func collapse() {
-        self.animator?.startAnimation()
-    }
-    
-    func expand() {
-        //figure out a way to do this animated
-        self.fractionComplete = 0.0
-    }
-    
-    private func setupAnimator() {
-        
-        var topPadding: CGFloat = 0.0
-        
-        if #available(iOS 11.0, *) {
-            if let bla = UIApplication.shared.delegate!.window {
-                topPadding = bla?.safeAreaInsets.top ?? 0.0
-            }
-            
-        }
-        
-        self.animator = UIViewPropertyAnimator(duration: 0.25, curve: .linear, animations: {
-            self.heightConstraint.constant = self.minHeight + topPadding
-            self.logo.alpha = 0
-            self.superview?.layoutIfNeeded()
-            self.layoutIfNeeded()
-        })
-        
-        self.animator?.pausesOnCompletion = true
-        
     }
     
     private func setupConstraints() {

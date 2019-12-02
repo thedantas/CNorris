@@ -27,7 +27,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQx-F8-GRF">
+                <visualEffectView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQx-F8-GRF">
                     <rect key="frame" x="0.0" y="160" width="414" height="736"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WdQ-kS-M1w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -84,6 +84,6 @@
         </view>
     </objects>
     <resources>
-        <image name="image_1" width="1920" height="1054"/>
+        <image name="image_1" width="1000" height="1500"/>
     </resources>
 </document>

@@ -15,7 +15,7 @@ import Swinject
 class MainView: UIViewController {
     
     var viewModel: MainViewModel!
-    let norrisRepository: NorrisStorage
+    let norrisStorage: NorrisStorage
     let localStorage: UserDefaultsDataStorage
 
     @IBOutlet weak var tableView: UITableView!
@@ -29,7 +29,7 @@ class MainView: UIViewController {
     }
     
     init(searchView: SearchView, repository: NorrisStorage, localStorage: UserDefaultsDataStorage) {
-        self.norrisRepository = repository
+        self.norrisStorage = repository
         self.searchView = searchView
         self.localStorage = localStorage
         super.init(nibName: String(describing: MainView.self), bundle: nil)
@@ -43,6 +43,7 @@ class MainView: UIViewController {
         super.viewDidLoad()
         self.configureViews()
         self.setupViewModel()
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,13 +60,13 @@ extension MainView {
             input: (search: self.headerView.search,
                   categorySelected: self.searchView.categorySelected,
                   recentSearchSelected: self.searchView.recentSearchSelected),
-            norrisRepository: self.norrisRepository,
+            norrisStorage: self.norrisStorage,
                            localStorage: localStorage)
     }
     
     func configureViews() {
         self.tableView.contentInset.top = self.headerView.maxHeight - 20
-        self.tableView.register(cellType: FactCell.self)
+        self.tableView.register(cellType: NorrisFactCell.self)
         self.tableView.backgroundColor = .clear
         self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = UITableView.automaticDimension
@@ -79,8 +80,8 @@ extension MainView {
     
         self.viewModel.results
             .drive(tableView.rx
-                .items(cellIdentifier: "FactCell",
-                       cellType: FactCell.self)) { [weak self] _, element, cell in
+                .items(cellIdentifier: "NorrisFactCell",
+                       cellType: NorrisFactCell.self)) { [weak self] _, element, cell in
                         cell.bind(element)
                         cell.delegate = self
             }.disposed(by: rx.disposeBag)
@@ -119,10 +120,10 @@ extension MainView {
             .subscribe(onNext: { [weak self] show in
                 self?.searchContainer.isHidden = !show
                 if show {
-                    self?.headerView.collapse()
+               
                     self?.searchView.showAnimated()
                 } else {
-                    self?.headerView.expand()
+                   
                     self?.view.endEditing(true)
                 }
             })

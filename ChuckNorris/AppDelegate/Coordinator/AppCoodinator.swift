@@ -23,7 +23,7 @@ class AppCoordinator: Coordinator {
             return window.rootViewController
         }
         set {
-            UIView.transition(with: self.window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            UIView.transition(with: self.window, duration: 0.5, options: .transitionFlipFromTop, animations: {
                 self.window.rootViewController = newValue
             }, completion: nil)
         }

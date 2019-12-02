@@ -23,13 +23,13 @@ class SearchViewModel {
     
     let disposeBag = DisposeBag()
     
-    init(norrisRepository: NorrisStorage,
+    init(norrisStorage: NorrisStorage,
          localStorage: UserDefaultsDataStorage) {
         
         let loadingIndicator = ActivityIndicator()
         self.isLoading = loadingIndicator.asDriver()
         
-        let categoriesResult = norrisRepository
+        let categoriesResult = norrisStorage
             .categories()
             .trackActivity(loadingIndicator)
             .retryWhenNeeded()

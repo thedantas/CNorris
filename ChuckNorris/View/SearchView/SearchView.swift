@@ -14,20 +14,22 @@ import Reusable
 
 class SearchView: UIViewController {
     
+    //MARK: Outlets
     @IBOutlet weak var categoriesCloudView: CategoriesTagView!
-    @IBOutlet weak var recentSearchCloudView: CategoriesTagView!
+    @IBOutlet weak var pastSearchCloudView: CategoriesTagView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    //MARK: Variables
     var viewModel: SearchViewModel!
-    let norrisRepository: NorrisStorage
+    let norrisStorage: NorrisStorage
     let localStorage: UserDefaultsDataStorage
-    
     var categorySelected: Driver<String>!
     var recentSearchSelected: Driver<String>!
-
-    init(norrisRepository: NorrisStorage,
+    
+    //MARK: Life Cycle
+    init(norrisStorage: NorrisStorage,
          localStorage: UserDefaultsDataStorage) {
-        self.norrisRepository = norrisRepository
+        self.norrisStorage = norrisStorage
         self.localStorage = localStorage
         super.init(nibName: String(describing: SearchView.self), bundle: nil)
     }
@@ -40,16 +42,18 @@ class SearchView: UIViewController {
         super.viewDidLoad()
         self.setupViewModel()
         self.setupBindings()
+        self.hideKeyboardWhenTappedAround()
         self.view.accessibilityIdentifier = "search_view"
     }
     
 }
 
+//MARK: Extension
 extension SearchView {
     
     func setupViewModel() {
         self.viewModel = SearchViewModel(
-            norrisRepository: self.norrisRepository,
+            norrisStorage: self.norrisStorage,
             localStorage: self.localStorage)
     }
     
@@ -60,10 +64,10 @@ extension SearchView {
         
         self.categorySelected = self.categoriesCloudView.rx.tagSelected
         
-        self.recentSearchSelected = self.recentSearchCloudView.rx.tagSelected
+        self.recentSearchSelected = self.pastSearchCloudView.rx.tagSelected
         
         self.viewModel.recentSearch
-            .drive(self.recentSearchCloudView.rx.items)
+            .drive(self.pastSearchCloudView.rx.items)
             .disposed(by: rx.disposeBag)
         
         self.viewModel.isLoading
@@ -77,10 +81,9 @@ extension SearchView {
     }
 }
 
-//Animations
 extension SearchView {
     func showAnimated() {
-        self.recentSearchCloudView.alpha = 0.0
+        self.pastSearchCloudView.alpha = 0.0
         self.categoriesCloudView.alpha = 0.0
         self.view.layoutIfNeeded()
         
@@ -90,7 +93,7 @@ extension SearchView {
         }, completion: nil)
         
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseOut, animations: {
-            self.recentSearchCloudView.alpha = 1.0
+            self.pastSearchCloudView.alpha = 1.0
             self.view.layoutIfNeeded()
         }, completion: nil)
     }

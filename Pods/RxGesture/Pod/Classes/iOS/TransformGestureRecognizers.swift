@@ -39,7 +39,7 @@ public typealias TransformControlEvent = ControlEvent<TransformGestureRecognizer
 public typealias TransformObservable = Observable<TransformGestureRecognizers>
 
 public extension Reactive where Base: View {
-    public func transformGestures(
+    func transformGestures(
         configuration: TransformConfiguration? = nil
         ) -> TransformControlEvent {
 
@@ -57,7 +57,7 @@ public extension Reactive where Base: View {
 
 public extension ObservableType where E == TransformGestureRecognizers {
 
-    public func when(_ states: GestureRecognizerState...) -> Observable<E> {
+    func when(_ states: GestureRecognizerState...) -> Observable<E> {
         return filter { gestures in
             return states.contains(gestures.panGesture.state)
                 || states.contains(gestures.rotationGesture.state)
@@ -65,7 +65,7 @@ public extension ObservableType where E == TransformGestureRecognizers {
         }
     }
 
-    public func asTransform(in view: TargetView = .view) -> Observable<(transform: CGAffineTransform, velocity: TransformVelocity)> {
+    func asTransform(in view: TargetView = .view) -> Observable<(transform: CGAffineTransform, velocity: TransformVelocity)> {
         return self.map { gestures in
             let translationView = view.targetView(for: gestures.panGesture)
             let translation = gestures.panGesture.translation(in: translationView)

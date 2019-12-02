@@ -8,21 +8,22 @@
 
 import Foundation
 import UIKit
+import Lottie
 
-class EmptyView: UIView, StateSubview {
+class NotFindView: UIView, StateSubview {
     
+    //MARK: Variable
     private var didSetupViews: Bool = false
-    
+    var lottieView: LOTAnimationView?
     let label: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = "Oops! Can't find anything for this search :(\n\n"
-        label.font = UIFont.boldSystemFont(ofSize: 26)
-        label.numberOfLines = 0
-        label.textAlignment = .center
+        label.text = "Nothing found here, try again"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
+    //MARK: Function
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setupViews()
@@ -33,12 +34,14 @@ class EmptyView: UIView, StateSubview {
         UIView.animate(withDuration: 0.2) {
             self.alpha = 1.0
         }
+        lottieView?.play()
     }
     
     func hide() {
         UIView.animate(withDuration: 0.2) {
             self.alpha = 0.0
         }
+        lottieView?.stop()
     }
     
     private func setupViews() {
@@ -49,11 +52,20 @@ class EmptyView: UIView, StateSubview {
     }
     
     private func setupConstraints() {
+        self.lottieView = LOTAnimationView(name: "not_found")
+        self.addSubview(lottieView!)
         self.addSubview(label)
-        self.label.prepareForConstraints()
-        self.label.pinLeft(32)
-        self.label.pinRight(32)
-        self.label.pinBottom(130)
+        
+        lottieView?.alpha = 0.8
+        lottieView?.constraintWidth(120.0)
+        lottieView?.constraintHeight(120.0)
+        lottieView?.prepareForConstraints()
+        lottieView?.centerHorizontally()
+        lottieView?.centerVertically()
+        lottieView?.loopAnimation = true
+        
+        label.prepareForConstraints()
+        label.centerHorizontally()
+        label.pinBottom(130)
     }
-    
 }

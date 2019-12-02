@@ -83,6 +83,8 @@ extension GestureRecognizerState: CustomStringConvertible {
             case .ended:     return ".ended"
             case .cancelled: return ".cancelled"
             case .failed:    return ".failed"
+            @unknown default:
+                fatalError()
             }
             }()
     }

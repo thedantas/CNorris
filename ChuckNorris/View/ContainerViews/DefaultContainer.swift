@@ -23,13 +23,13 @@ final class DefaultContainer {
     
 }
 
-//Register Views
+//MARK: Extesion Register
 extension DefaultContainer {
     
     func registerViews() {
         
         self.container.register(SearchView.self) { resolver in
-            SearchView(norrisRepository: resolver.resolve(NorrisStorage.self)!,
+            SearchView(norrisStorage: resolver.resolve(NorrisStorage.self)!,
                        localStorage: resolver.resolve(UserDefaultsDataStorage.self)!)
         }
         
@@ -47,7 +47,6 @@ extension DefaultContainer {
     
 }
 
-//Register Services
 extension DefaultContainer {
     
     func registerServices() {
@@ -73,7 +72,6 @@ extension DefaultContainer {
     
 }
 
-//Register Storage
 extension DefaultContainer {
     
     func registerStorage() {

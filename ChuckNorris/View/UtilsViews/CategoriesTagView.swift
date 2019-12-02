@@ -14,6 +14,7 @@ import RxCocoa
 
 class CategoriesTagView: UIView {
     
+    //MARK: Variables
     var items: [String] = [] {
         didSet {
             self.observableItems.onNext(items)
@@ -28,6 +29,7 @@ class CategoriesTagView: UIView {
     
     private var textColor: UIColor = .white
 
+    //MARK: Init
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +39,6 @@ class CategoriesTagView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.translatesAutoresizingMaskIntoConstraints = false
-        //self.setupViews()
     }
     
     lazy var collectionView: UICollectionView = {
@@ -51,6 +52,7 @@ class CategoriesTagView: UIView {
         self.setupViews()
     }
     
+    //MARK: Function
     func configure(tagHeight: CGFloat, tagBackgroundColor: UIColor, textColor: UIColor) {
         self.tagHeight = tagHeight
         self.tagBackgroundColor = tagBackgroundColor
@@ -68,7 +70,8 @@ class CategoriesTagView: UIView {
         self.collectionView.pinEdgesToSuperview()
         self.backgroundColor = .clear
         self.collectionView.backgroundColor = .clear
-        self.accessibilityIdentifier = "cloudTagView"
+        self.accessibilityIdentifier = "categoriesTagView"
+        
     }
     
     private func setupBindinds() {
@@ -83,6 +86,7 @@ class CategoriesTagView: UIView {
     
 }
 
+//MARK: Extension
 extension CategoriesTagView: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
