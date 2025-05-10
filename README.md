@@ -2,7 +2,7 @@
 
 ![](gitAssets/chucknorris_logo.png)
 
-StonesNorris is an application to participate in the @Stones selection process, to make this amazing app I used **chucknorris.io** is a free JSON API for hand curated Chuck Norris facts.
+To make this amazing app I used **chucknorris.io** is a free JSON API for hand curated Chuck Norris facts.
 
 ![](gitAssets/home.gif) 
 
