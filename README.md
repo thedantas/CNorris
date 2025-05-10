@@ -1,4 +1,4 @@
-# StonesNorris
+# CNorris
 
 ![](gitAssets/chucknorris_logo.png)
 
